@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | E-Commerce Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="projects.html" style="text-decoration: none; color: #2563eb;">&larr; Back to all projects</a>
+        
+        <h1 style="margin-top: 1rem;">SnackTime</h1>
+        <p class="subtitle">June 2025</p>
+
+        <div style="background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <h3>Project Overview</h3>
+            <p style="margin: 1rem 0;">SnackTime is an interactive installation forcing a question upon anyone who interacts with it: “What is your time worth?”. The vending machine is filled with various snacks, drinks, and other items. However, users quickly find out that their normal form of currency, money, is useless. Each item has a price tag with a specific amount of time printed on it. A bag of chips is worth roughly two minutes, while a packet of cigarettes costs up to 45. To pay, users have to hold down a small button on each side of the vending machine, essentially hugging the machine for the duration specified on the price tag of the desired item. After completing the payment, the items falls out and a receipt is printed showing the user turned customer the details of their purchase.</p>
+            <p style="margin: 1rem 0;">Refunds not (physically) possible.</p>
+            <p style="margin: 1rem 0;">Made with: Mats Doornbos (co-creator), Timothy Schuur (co-creator), Fons Verbeek (coach)</p>
+        </div>
+                <!-- NEW: Scrollable Gallery & Documents Section -->
+                <div class="gallery-section">
+                    <h3 class="gallery-title">Project Gallery & Documents</h3>
+                    
+                    <div class="gallery-scroll-container">
+                    <!-- Image Card 1 -->
+                        <div class="gallery-item">
+                            <img src="images/SnackTime/Snack Time.png" alt="Poster">
+                            <p class="caption">Poster</p>
+                        </div>
+        
+                        <!-- Document/PDF Card -->
+                        <div class="gallery-item document-card">
+                            <div class="doc-icon">📄</div>
+                            <h4>Project Paper</h4>
+                            <p>A paper describing the project in further detaiL!</p>
+                            <a href="documents/Project Paper.pdf" target="_blank" class="btn btn-small">View PDF &rarr;</a>
+                        </div>
+                        <!-- Video Card -->
+                       <div class="gallery-item">
+                        <!-- The 'controls' attribute adds play/pause buttons, progress bar, and volume -->
+                        <video controls preload="metadata" poster="images/video-thumbnail-placeholder.jpg">
+                            <source src="videos/SnackTime/SnackTime.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="caption">Promo Video</p>
+                        </div>
+                    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+<!-- Lightbox Modal Container -->
+<div id="lightbox-modal" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+<!-- JavaScript for Lightbox functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Find all images inside the gallery cards
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        // Attach a click event to each image
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src; // Copy the clicked image's source path
+                modalCaption.textContent = img.alt; // Use the image's alt text as the caption!
+            });
+        });
+
+        // Close modal when clicking the 'X' button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking anywhere on the dark background
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Optional: Close modal when the user presses the 'Escape' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

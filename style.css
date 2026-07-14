@@ -1,0 +1,549 @@
+/* =========================================
+   1. Base Reset & Typography
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+ 
+body {
+    background-color: #f8f9fa;
+    color: #333333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+ 
+/* =========================================
+   2. Navigation Bar
+========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+ 
+.logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #2563eb;
+}
+ 
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+ 
+.nav-links a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+ 
+.nav-links a:hover,
+.nav-links a.active {
+    color: #2563eb;
+}
+ 
+/* =========================================
+   3. Layout Container & Text
+========================================= */
+.container {
+    width: 100%; /* Forces a definite width so layout never shrinks to fit content (see below) */
+    max-width: 1100px; /* Widened slightly to fit the right sidebar cleanly */
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+ 
+h1 {
+    font-size: 2.5rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+ 
+.subtitle {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+ 
+/* =========================================
+   4. Buttons
+========================================= */
+.cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+ 
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+ 
+.btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+ 
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+ 
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+ 
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+ 
+.btn-small:hover {
+    background-color: #dbeafe;
+}
+ 
+/* =========================================
+   5. Project Layout & Tag Sidebar
+========================================= */
+/* Wrapper that holds the left grid and right sidebar */
+.projects-layout {
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+}
+ 
+.projects-main {
+    flex: 1;
+    width: 100%;
+    min-width: 0; /* Prevents grid columns from stretching the container */
+    min-height: 80vh; /* Prevents the page from collapsing/jumping when filters reduce item count! */
+}
+ 
+/* Right-Hand Tag Selection Sidebar */
+.tag-sidebar {
+    width: 220px;
+    flex-shrink: 0; /* Strictly locks sidebar width so it never squishes or shifts horizontally */
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    position: sticky;
+    top: 2rem; /* Anchors the sidebar securely in place while scrolling */
+    align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+ 
+.tag-sidebar h3 {
+    font-size: 1.1rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+ 
+.filter-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+ 
+/* Filter Menu Buttons */
+.filter-btn {
+    text-align: left;
+    background: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+ 
+.filter-btn:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+ 
+.filter-btn.active {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+    font-weight: 600;
+}
+ 
+/* Project Cards Grid */
+.project-grid {
+    display: grid;
+    /* minmax(0, 1fr) is the secret: it locks both columns to an identical, unchanging width! */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3.5rem;
+    row-gap: 4rem;
+    position: relative;
+    padding-bottom: 6rem;
+    width: 100%;
+    z-index: 1;
+}
+ 
+/* Hidden state for filtered-out cards */
+.project-card.hidden {
+    display: none !important;
+}
+ 
+/* Dynamic Zig-Zag Offsets controlled by JavaScript */
+.project-card.col-right {
+    transform: translateY(9.5rem);
+}
+ 
+.project-card.col-left {
+    transform: translateY(0);
+}
+ 
+/* Identical Block Dimensions & Styling */
+.project-card {
+    background: #ffffff;
+    height: 180px; /* Locked height ensures identical boxes */
+    width: 100%;   /* Locked width fills the equal grid column perfectly */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.2s;
+}
+ 
+.project-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+}
+ 
+.project-card h3 {
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ensures extra-long titles don't stretch the box width */
+}
+ 
+/* Tag Pills inside the Project Cards */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+ 
+.tag-pill {
+    font-size: 0.75rem;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+ 
+.project-date {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+ 
+/* Diagonal Directional Arrows */
+.project-card::after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+}
+ 
+/* Left Column Arrow: Points Diagonally Down-Right */
+.project-card.col-left::after {
+    right: -2.75rem;
+    bottom: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='7' x2='17' y2='17'/%3E%3Cpolyline points='17 7 17 17 7 17'/%3E%3C/svg%3E");
+}
+ 
+/* Right Column Arrow: Points Diagonally Down-Left */
+.project-card.col-right::after {
+    left: -2.75rem;
+    bottom: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='17' y1='7' x2='7' y2='17'/%3E%3Cpolyline points='17 17 7 17 7 7'/%3E%3C/svg%3E");
+}
+ 
+/* Hide arrow on whichever card is the last visible one */
+.project-card.is-last-visible::after {
+    display: none;
+}
+ 
+/* =========================================
+   6. Footer
+========================================= */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+ 
+/* =========================================
+   7. Mobile Responsiveness
+========================================= */
+@media (max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* Stacks elements vertically on mobile screens */
+    .projects-layout {
+        flex-direction: column;
+    }
+ 
+    .projects-main {
+        width: 100%;
+        min-height: auto; /* Releases forced vertical height on mobile */
+    }
+ 
+    /* Moves the sidebar to the TOP of the page on thinner screens! */
+    .tag-sidebar {
+        width: 100%;
+        position: static;
+        order: -1; /* Pushes the sidebar directly above the project grid */
+        margin-bottom: 1.5rem;
+    }
+ 
+    .filter-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+ 
+    .project-grid {
+        grid-template-columns: 1fr;
+        row-gap: 3.5rem;
+        padding-bottom: 2rem;
+    }
+ 
+    .project-card.col-right,
+    .project-card.col-left {
+        transform: none;
+    }
+    
+    .project-card {
+        height: auto;
+        min-height: 180px;
+    }
+ 
+    /* Rotate arrows straight down on mobile */
+    .project-card.col-left::after,
+    .project-card.col-right::after {
+        left: calc(50% - 1rem);
+        right: auto;
+        bottom: -2.75rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cpolyline points='19 12 12 19 5 12'/%3E%3C/svg%3E");
+    }
+}
+/* =========================================
+   8. Project Gallery & Documents
+========================================= */
+.gallery-section {
+    margin-top: 2.5rem;
+}
+
+.gallery-title {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+/* Horizontal scroll container */
+.gallery-scroll-container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar styling */
+.gallery-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 4px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Shared styling for all gallery cards */
+.gallery-item {
+    flex: 0 0 320px; /* Prevents shrinking and locks card width */
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image formatting inside cards */
+/* Image and Video formatting inside cards */
+/* Keep images cleanly filling the landscape box */
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Fit the entire video frame without cropping */
+.gallery-item video {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Prevents vertical video clipping! */
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #000000; /* Fills side margins with clean black bars */
+}
+
+.gallery-item .caption {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+/* Layout adjustments specific to document/PDF cards */
+.document-card {
+    padding: 1.5rem;
+    justify-content: space-between;
+}
+
+.document-card .doc-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.document-card h4 {
+    font-size: 1.1rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.document-card p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* =========================================
+   9. Lightbox Image Viewer
+========================================= */
+/* Change mouse cursor to a pointer so users know images are clickable */
+.gallery-item img {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.gallery-item img:hover {
+    opacity: 0.85;
+}
+
+/* The dark background overlay (hidden by default) */
+.lightbox {
+    display: none; 
+    position: fixed;
+    z-index: 1000; /* Ensures it sits on top of your navigation bar and all other content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+/* Shown when JavaScript adds the 'active' class */
+.lightbox.active {
+    display: flex;
+}
+
+/* The enlarged image box */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px; /* Matches your site's standard border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+/* Caption text below the enlarged image */
+#lightbox-caption {
+    color: #ffffff;
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* The 'X' Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: #2563eb; /* Matches your site's primary blue branding */
+}
+

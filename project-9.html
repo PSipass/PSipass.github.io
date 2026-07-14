@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | E-Commerce Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="projects.html" style="text-decoration: none; color: #2563eb;">&larr; Back to all projects</a>
+        
+        <h1 style="margin-top: 1rem;">Paradigm Shift Simulator</h1>
+        <p class="subtitle">June 2025</p>
+
+        <div style="background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <h3>Project Overview</h3>
+            <p style="margin: 1rem 0;">Being tasked with creating something relating to the philosophy of science, I chose to make an interactive, visual representation of the different stages of a paradigm shift. With a central altar showcasing the current paradigm or ideology, the almost religious belief in the status quo is represented. By introducing a new ideology, however, the slow but steady rise is visible. After an eventual crisis stage the paradigm shift is successfully completed and a history of all paradigms so far is shown to the viewer. This process can be repeated endlessly.</p>
+        </div>
+                        <!-- NEW: Scrollable Gallery & Documents Section -->
+                        <div class="gallery-section">
+                            <h3 class="gallery-title">Project Gallery & Documents</h3>
+                            
+                            <div class="gallery-scroll-container">
+                                <!-- Image Card 1 -->
+                                <div class="gallery-item">
+                                    <img src="images/ParadigmShift/S&H Final Screenshot.png" alt="Application Screenshot">
+                                    <p class="caption">Screenshot</p>
+                                </div>
+        
+                                <!-- Document/PDF Card -->
+                                <div class="gallery-item document-card">
+                                    <div class="doc-icon">📄</div>
+                                    <h4>Report</h4>
+                                    <p>Download the short report here!</p>
+                                    <a href="documents/S&H Final Assignment Doc.pdf" target="_blank" class="btn btn-small">View PDF &rarr;</a>
+                                </div>
+                                <!-- ZIP Download Card -->
+                                <div class="gallery-item document-card">
+                                    <div class="doc-icon">📦</div>
+                                    <h4>Project Source Code</h4>
+                                    <p>Download all the source code here!</p>
+                                    <!-- Notice the 'download' attribute added to the anchor tag -->
+                                    <a href="files/Final Project Code.rar" download class="btn btn-small">Download ZIP &darr;</a>
+                                </div>
+                            </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+<!-- Lightbox Modal Container -->
+<div id="lightbox-modal" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+<!-- JavaScript for Lightbox functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Find all images inside the gallery cards
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        // Attach a click event to each image
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src; // Copy the clicked image's source path
+                modalCaption.textContent = img.alt; // Use the image's alt text as the caption!
+            });
+        });
+
+        // Close modal when clicking the 'X' button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking anywhere on the dark background
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Optional: Close modal when the user presses the 'Escape' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

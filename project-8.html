@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | E-Commerce Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="projects.html" style="text-decoration: none; color: #2563eb;">&larr; Back to all projects</a>
+        
+        <h1 style="margin-top: 1rem;">Short Circuit</h1>
+        <p class="subtitle">April 2025</p>
+
+        <div style="background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <h3>Project Overview</h3>
+            <p style="margin: 1rem 0;">Short Circuit is a work which can be interpreted in different ways. Is it a simple representation of self-harm? A critique on how we assign emotion to artificially created objects? I like to think of it as a way to visualize how enabling unhealthy habits can lead to tragic outcomes, but feel free to ponder any other angles.</p>
+            <p style="margin: 1rem 0;">Circuit consists of a custom-built robot with a, literal, single-track mind. With its copper hands pointing outwards, it is constantly trying to roll forwards towards an electrical outlet. However, no matter how long or hard he tries, a piece of string attached to his back keeps him in place. A pair of scissors is conveniently (ominously) placed near the robot. The onus, then, is on the viewer to either leave the robot to his own devices or cut the rope, providing the robot with what it so obviously wants. If cut, the robot moves towards the outlet until its hands make contact and, a few seconds later, a capacitor inside of the robot’s head blows up due to being overloaded. The only thing remaining being a cloud of smoke.</p>
+            <p style="margin: 1rem 0;">Made with: Mats Doornbos, Timothy Schuur</p>
+        </div>
+                <!-- NEW: Scrollable Gallery & Documents Section -->
+                <div class="gallery-section">
+                    <h3 class="gallery-title">Project Gallery & Documents</h3>
+                    
+                    <div class="gallery-scroll-container">
+                        <!-- Image Card 1 -->
+                        <div class="gallery-item">
+                            <img src="images/ShortCircuit/ShortCircuitImage1.png" alt="Application Screenshot">
+                            <p class="caption">Front View</p>
+                        </div>
+        
+                        <!-- Image Card 2 -->
+                        <div class="gallery-item">
+                            <img src="images/ShortCircuit/ShortCircuitImage2.png" alt="Cost Breakdown Chart">
+                            <p class="caption">Top View</p>
+                        </div>
+                        <!-- Image Card 2 -->
+                        <div class="gallery-item">
+                            <img src="images/ShortCircuit/ShortCircuitImage3.jpg" alt="Cost Breakdown Chart">
+                            <p class="caption">Facing the outlet</p>
+                        </div>
+                        <!-- Video Card -->
+                        <div class="gallery-item">
+                        <!-- The 'controls' attribute adds play/pause buttons, progress bar, and volume -->
+                        <video controls preload="metadata" poster="images/video-thumbnail-placeholder.jpg">
+                            <source src="videos/ShortCircuit/demonstration.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="caption">Demonstration</p>
+                        </div>
+                    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+<!-- Lightbox Modal Container -->
+<div id="lightbox-modal" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+<!-- JavaScript for Lightbox functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Find all images inside the gallery cards
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        // Attach a click event to each image
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src; // Copy the clicked image's source path
+                modalCaption.textContent = img.alt; // Use the image's alt text as the caption!
+            });
+        });
+
+        // Close modal when clicking the 'X' button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking anywhere on the dark background
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Optional: Close modal when the user presses the 'Escape' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
