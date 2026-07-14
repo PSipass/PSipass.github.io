@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | E-Commerce Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="projects.html" style="text-decoration: none; color: #2563eb;">&larr; Back to all projects</a>
+        
+        <h1 style="margin-top: 1rem;">Human Critic VS. Machine Critic (Research Poster)</h1>
+        <p class="subtitle">April 2025</p>
+
+        <div style="background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <h3>Project Overview</h3>
+            <p style="margin: 1rem 0;">Do people respond better to negative feedback from humans or machines? This is the question I, together with two classmates, tried to answer. We had participants solve a physical puzzle while being told a flat ‘no’ by either us or a digital voice whenever they made a mistake. Convincing the participants that we had an AI system sophisticated enough to recognize mistakes was the hard part. In truth, a GoPro aimed at the puzzle alongside a speaker we controlled from outside the testing environment functioned as the ‘machine’ critic. While statistically insignificant, six participants preferred the human critic, while only three preferred the ‘machine’ critic. Performance was not impacted but most participants did mention how the lack of any positive feedback from both critics was stressful. The most interesting finding was perhaps the reasoning behind the three participants’ preference for the ‘machine’ critic, as they mentioned that they did not feel as judged by the ‘machine’ critic compared to the human critic.</p>
+            <p style="margin: 1rem 0;">This research was presented as a poster. The poster can be found below.</p>
+            <p style="margin: 1rem 0;">Made with: Mats Doornbos, Timothy Schuur</p>
+        </div>
+                <!-- NEW: Scrollable Gallery & Documents Section -->
+                <div class="gallery-section">
+                    <h3 class="gallery-title">Project Gallery & Documents</h3>
+                    
+                    <div class="gallery-scroll-container">
+                        <!-- Document/PDF Card -->
+                        <div class="gallery-item document-card">
+                            <div class="doc-icon">📄</div>
+                            <h4>Research Poster</h4>
+                            <p>Download the research poster here!</p>
+                            <a href="documents/Corrected by AI or Humans Which Feels More Stressful.pdf" target="_blank" class="btn btn-small">View PDF &rarr;</a>
+                        </div>
+                    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+<!-- Lightbox Modal Container -->
+<div id="lightbox-modal" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+<!-- JavaScript for Lightbox functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Find all images inside the gallery cards
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        // Attach a click event to each image
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src; // Copy the clicked image's source path
+                modalCaption.textContent = img.alt; // Use the image's alt text as the caption!
+            });
+        });
+
+        // Close modal when clicking the 'X' button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking anywhere on the dark background
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Optional: Close modal when the user presses the 'Escape' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

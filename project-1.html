@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | E-Commerce Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="projects.html" style="text-decoration: none; color: #2563eb;">&larr; Back to all projects</a>
+        
+        <h1 style="margin-top: 1rem;">EnergyCostCalc</h1>
+        <p class="subtitle">December 2024</p>
+
+        <div style="background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <h3>Project Overview</h3>
+            <p style="margin: 1rem 0;">EnergyCostCalc is a simple tool for regular people to calculate how much money they are losing on their usage of electronic household appliances such as coffee machines. In a time when economic hardship has become the norm, every outflow of money should be evaluated. With the tool, users can select specific models of common household appliances and calculate how much money they are spending in accordance with their usage frequency. Additionally, the tool also provides users with recommendations for more cost-effective appliances.</p>
+            <p style="margin: 1rem 0;">Made with: Aleksandr Petrov (co-creator) and Reyhan Danisan (supervisor)</p>
+        </div>
+        <!-- NEW: Scrollable Gallery & Documents Section -->
+        <div class="gallery-section">
+            <h3 class="gallery-title">Project Gallery & Documents</h3>
+            
+            <div class="gallery-scroll-container">
+                <!-- Image Card 1 -->
+                <div class="gallery-item">
+                    <img src="images/EnergyCostCalc/UI_screenshot.png" alt="Application Screenshot">
+                    <p class="caption">Input UI</p>
+                </div>
+
+                <!-- Image Card 2 -->
+                <div class="gallery-item">
+                    <img src="images/EnergyCostCalc/Results_screenshot.png" alt="Cost Breakdown Chart">
+                    <p class="caption">Results Chart</p>
+                </div>
+
+                <!-- Document/PDF Card -->
+                <div class="gallery-item document-card">
+                    <div class="doc-icon">📄</div>
+                    <h4>Project Report</h4>
+                    <p>The full project report can be found here!</p>
+                    <a href="documents/2024-HCIIV-FinalPaper[14].pdf" target="_blank" class="btn btn-small">View PDF &rarr;</a>
+                </div>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+<!-- Lightbox Modal Container -->
+<div id="lightbox-modal" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+<!-- JavaScript for Lightbox functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Find all images inside the gallery cards
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+
+        // Attach a click event to each image
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src; // Copy the clicked image's source path
+                modalCaption.textContent = img.alt; // Use the image's alt text as the caption!
+            });
+        });
+
+        // Close modal when clicking the 'X' button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking anywhere on the dark background
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Optional: Close modal when the user presses the 'Escape' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

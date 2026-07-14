@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Papers</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Embedded styles for fixed-width paper cards and responsive grid -->
+    <style>
+        /* Uses minmax(0, 1fr) to prevent horizontal overflow and lock column widths */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        /* Fixed-width blocks with auto height to fit description text cleanly */
+        .paper-card {
+            background: #ffffff;
+            height: auto;
+            min-height: 320px;
+            width: 100%;
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.2s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .paper-card h3 {
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+            font-size: 1.25rem;
+            line-height: 1.3;
+        }
+
+        .paper-description {
+            margin: 0.8rem 0 1.2rem 0;
+            line-height: 1.5;
+            color: #4b5563;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Stacks cards vertically on mobile screens matching your 850px breakpoint */
+        @media (max-width: 850px) {
+            .papers-grid {
+                grid-template-columns: 1fr;
+            }
+            .paper-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Payman Sipass</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="papers.html" class="active">Papers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>My Papers</h1>
+        <p class="subtitle">A collection of papers, and technical essays I have written during my studies.</p>
+
+        <div class="papers-grid">
+            
+            <!-- Paper 1 -->
+            <div class="paper-card">
+                <div>
+                    <h3>7-Papers Assignment: Japanese and Chinese Language Learning in AR and VR</h3>
+                    <p class="paper-description">
+                        The 7-Papers assignment is one where I was tasked with writing a short introductory
+                        literature review of sorts about a topic which interested me. I chose to write about
+                        the research on how effective AR and VR technologies are for Japanese and Chinese
+                        language learners. The reason I chose these two languages is because they both use
+                        logographic characters. 
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-pill">Solo Project</span>
+                        <span class="tag-pill">Research</span>
+                        <span class="tag-pill">Languages</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="project-date">October 2024</p>
+                    <a href="documents/7 Papers Assignment.pdf" download class="btn btn-small">Download PDF &darr;</a>
+                </div>
+            </div>
+
+            <!-- Paper 2 -->
+            <div class="paper-card">
+                <div>
+                    <h3>Solitude as a Strategy in Creative and Performing Arts</h3>
+                    <p class="paper-description">
+                        In this paper, I examine how the concept of solitude can be found used as a strategy
+                        in different pieces of arts, be they paintings, installations, or performances.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-pill">Solo Project</span>
+                        <span class="tag-pill">Art</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="project-date">October 2024</p>
+                    <a href="documents/SiCaPa Final Assignment.pdf" download class="btn btn-small">Download PDF &darr;</a>
+                </div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="paper-card">
+                <div>
+                    <h3>Indoor Cats VS. Outdoor Cats: A Research Proposal</h3>
+                    <p class="paper-description">
+                        While research has been done on the communication possible between cats and humans,
+                        little investigation has been conducted on how this communication differs between cats
+                        that are allowed to go outside compared to those that are strictly indoor cats. This proposal
+                        reviews the current literature and proposes a research plan to fill this gap.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-pill">Solo Project</span>
+                        <span class="tag-pill">Research</span>
+                        <span class="tag-pill">Animals</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="project-date">March 2025</p>
+                    <a href="documents/IndoorVSOutdoorCatsProposal.pdf" download class="btn btn-small">Download PDF &darr;</a>
+                </div>
+            </div>
+
+            <!-- Paper 4 -->
+            <div class="paper-card">
+                <div>
+                    <h3>Analyzing the Impact of the Form of Navigational Guidance on 
+                        Spatial Working Memory in Three-dimensional Environments </h3>
+                    <p class="paper-description">
+                        Using the popular videogame Minecraft as a research tool, we created multiple mazes
+                        for participants to collect three items in. For each maze, a different navigational method
+                        was provided to find the items (signs on the wall, written instructions, beacons of light).
+                        At the end, the participant was asked multiple questions about the maze to see how well they
+                        remembered their environment, which tested their spatial working memory. Results were mostly
+                        underwhelming due to a small sample size, subpar survey questions, and an imbalance in maze 
+                        difficulty.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-pill">Group Project</span>
+                        <span class="tag-pill">Research</span>
+                        <span class="tag-pill">Navigation</span>
+                        <span class="tag-pill">Working Memory</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="project-date">December 2025</p>
+                    <a href="documents/Videogames for Research Report.pdf" download class="btn btn-small">Download PDF &darr;</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Payman Sipass. Hosted on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
